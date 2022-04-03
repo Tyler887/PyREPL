@@ -33,6 +33,7 @@ try:
               repl = repl + "\n   " + addtorepl
               addtorepl = ""
             else:
+              print(f"{Fore.MAGENTA}[debug]{Style.RESET_ALL} Output is:\n{repl}")
               dead_end = True
         os.system(f"python{sys.version_info.major} {user_home}/.pythonrepl_code")
         os.unlink(f"{user_home}/.pythonrepl_code")
