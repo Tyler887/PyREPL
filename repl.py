@@ -27,3 +27,5 @@ try:
         with open(f"{user_home}/.pythonrepl_code", "a") as code:
           code.write("\n" + repl)
         os.unlink(f"{user_home}/.pythonrepl_code")
+except KeyboardInterrupt:
+  print("\nKeyboardInterrupt")
