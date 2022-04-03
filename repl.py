@@ -9,7 +9,7 @@ print("Creating an empty REPL file...")
 with open(f"{user_home}/.pythonrepl_code", "w") as code:
   code.write("")
 imports = []
-print(f"""Python {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.patch} [PyREPL ({pyrepl_version})] on {sys.platform}
+print(f"""Python {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro} [PyREPL ({pyrepl_version})] on {sys.platform}
 Type "help", "copyright", "credits" or "license" for more information.""")
 try:
   # Function to add module to REPL code.
