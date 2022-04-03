@@ -28,9 +28,9 @@ try:
         dead_end = False
         if repl.endswith(":"):
           while not dead_end:
-            addtorepl = input("         ")
+            addtorepl = input("   ")
             if addtorepl != "":
-              repl = repl + "\n" + addtorepl
+              repl = repl + "\n   " + addtorepl
               addtorepl = ""
             else:
               dead_end = True
