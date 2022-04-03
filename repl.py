@@ -27,5 +27,7 @@ try:
           code.write("\n" + repl)
         os.system(f"python{sys.version_info.major} {user_home}/.pythonrepl_code")
         os.unlink(f"{user_home}/.pythonrepl_code")
+        with open(f"{user_home}/.pythonrepl_code", "w") as code:
+              code.write("")
 except KeyboardInterrupt:
   print("\nKeyboardInterrupt")
