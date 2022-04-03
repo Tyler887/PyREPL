@@ -1,6 +1,7 @@
 import os
 from colorama import *
 import sys
+pyrepl_versionn = "dev"
 user_home = os.path.expanduser("~")
 if os.path.isfile(f"{user_home}/.pythonrepl_code"):
   print(f"Error: Existing repl. Delete {user_home}/.pythonrepl_code to continue.")
