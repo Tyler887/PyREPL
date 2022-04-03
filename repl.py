@@ -1,12 +1,10 @@
 import os
 from colorama import *
 import sys
-pyrepl_versionn = "dev"
+pyrepl_version = "dev"
 user_home = os.path.expanduser("~")
 if os.path.isfile(f"{user_home}/.pythonrepl_code"):
-  print(f"Error: Existing repl. Delete {user_home}/.pythonrepl_code to continue.")
-  exit(1)
-print("Creating an empty REPL file...")
+  os.unlink(f"{user_home}/.pythonrepl_code")
 with open(f"{user_home}/.pythonrepl_code", "w") as code:
   code.write("")
 imports = []
@@ -27,6 +25,7 @@ try:
             code.write(f"import {i} # Import {i}\n")
         with open(f"{user_home}/.pythonrepl_code", "a") as code:
           code.write("\n" + repl)
+        os.system(f"python{sys.version_info.major} {user_home}/.pythonrepl_code")
         os.unlink(f"{user_home}/.pythonrepl_code")
 except KeyboardInterrupt:
   print("\nKeyboardInterrupt")
