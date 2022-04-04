@@ -1,6 +1,7 @@
 import os
 from colorama import *
 import sys
+import importlib
 pyrepl_version = "dev"
 user_home = os.path.expanduser("~")
 if os.path.isfile(f"{user_home}/.pythonrepl_code"):
@@ -13,8 +14,10 @@ Type "help", "copyright", "credits" or "license" for more information.""")
 try:
   # Function to add module to REPL code.
   def add_module(module):
+      if importlib.util.find_spec(module) is None:
+        print(f"{Fore.RED}Error:{Style.RESET_ALL} {module} does not exist.")
+      else:
         imports.append(module)
-        print(f"Added {module}. Actual Python importing won't work; this breaks the module.")
   while True:
         repl = input(">>> ")
         if repl.startswith("import "):
@@ -26,7 +29,7 @@ try:
         dead_end = False
         if repl.endswith(":"):
           while not dead_end:
-            addtorepl = input("... ")
+            addtorepl = input("    ")
             if addtorepl != "":
               repl = f"""{repl}
 {addtorepl}"""
