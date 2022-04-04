@@ -11,11 +11,10 @@ with open(f"{user_home}/.pythonrepl_code", "w") as code:
   code.write("")
 imports = []
 print(f"""Python {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro} [PyREPL ({pyrepl_version})] on {sys.platform}
-Type "help", "copyright", "credits" or "license" for more information.""")
+Type "help()", "copyright()", "credits()" or "license()" for more information.""")
 try:
   # Function to add module to REPL code.
   def add_module(module):
-      dont_run = True
       if importlib.util.find_spec(module) is None:
         print(f"{Fore.RED}Error:{Style.RESET_ALL} {module} does not exist.")
       else:
@@ -23,6 +22,7 @@ try:
   while True:
         repl = input(">>> ")
         if repl.startswith("import "):
+           dont_run = True
            add_module(repl.replace("import ","",1))
         os.unlink(f"{user_home}/.pythonrepl_code")
         for i in imports:
