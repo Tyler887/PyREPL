@@ -2,6 +2,7 @@ import os
 from colorama import *
 import sys
 import importlib
+dont_run = False
 pyrepl_version = "dev"
 user_home = os.path.expanduser("~")
 if os.path.isfile(f"{user_home}/.pythonrepl_code"):
@@ -14,6 +15,7 @@ Type "help", "copyright", "credits" or "license" for more information.""")
 try:
   # Function to add module to REPL code.
   def add_module(module):
+      dont_run = True
       if importlib.util.find_spec(module) is None:
         print(f"{Fore.RED}Error:{Style.RESET_ALL} {module} does not exist.")
       else:
@@ -38,11 +40,13 @@ try:
               dead_end = True
         with open(f"{user_home}/.pythonrepl_code", "a") as code:
           code.write("\n" + repl)
-        os.system(f"python{sys.version_info.major} {user_home}/.pythonrepl_code")
+        if not dont_run:
+          os.system(f"python{sys.version_info.major} {user_home}/.pythonrepl_code")
         os.unlink(f"{user_home}/.pythonrepl_code")
         with open(f"{user_home}/.pythonrepl_code", "w") as code:
               code.write("")
         repl = ""
         dead_end = False
+        dont_run = False
 except KeyboardInterrupt:
   print("\nKeyboardInterrupt")
