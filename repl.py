@@ -31,7 +31,7 @@ try:
             addtorepl = input("... ")
             if addtorepl != "":
               repl = f"""{repl}
-              {addtorepl}"""
+{addtorepl}"""
               addtorepl = ""
             else:
               print(f"{Fore.MAGENTA}[debug]{Style.RESET_ALL} Output is:\n{repl}")
