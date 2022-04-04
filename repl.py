@@ -23,8 +23,6 @@ try:
         for i in imports:
           with open(f"{user_home}/.pythonrepl_code", "a") as code:
             code.write(f"import {i} # Import {i}\n")
-        with open(f"{user_home}/.pythonrepl_code", "a") as code:
-          code.write("\n" + repl)
         dead_end = False
         if repl.endswith(":"):
           while not dead_end:
@@ -34,8 +32,9 @@ try:
 {addtorepl}"""
               addtorepl = ""
             else:
-              print(f"{Fore.MAGENTA}[debug]{Style.RESET_ALL} Output is:\n{repl}")
               dead_end = True
+        with open(f"{user_home}/.pythonrepl_code", "a") as code:
+          code.write("\n" + repl)
         os.system(f"python{sys.version_info.major} {user_home}/.pythonrepl_code")
         os.unlink(f"{user_home}/.pythonrepl_code")
         with open(f"{user_home}/.pythonrepl_code", "w") as code:
