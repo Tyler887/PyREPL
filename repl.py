@@ -2,7 +2,7 @@ import os
 from colorama import *
 init()
 import sys
-import importlib
+import importlib.util as importlib
 dont_run = False
 pyrepl_version = "dev"
 user_home = os.path.expanduser("~")
@@ -16,7 +16,7 @@ Type "help()", "copyright()", "credits()" or "license()" for more information.""
 try:
   # Function to add module to REPL code.
   def add_module(module):
-      if importlib.util.find_spec(module) is None:
+      if importlib.find_spec(module) is None:
         print(f"{Fore.RED}Error:{Style.RESET_ALL} {module} does not exist.")
       else:
         imports.append(module)
