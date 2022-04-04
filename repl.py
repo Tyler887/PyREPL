@@ -28,10 +28,10 @@ try:
         dead_end = False
         if repl.endswith(":"):
           while not dead_end:
-            addtorepl = input("       >>> ")
+            addtorepl = input("... ")
             if addtorepl != "":
               repl = f"""{repl}
-                 {addtorepl}"""
+              {addtorepl}"""
               addtorepl = ""
             else:
               print(f"{Fore.MAGENTA}[debug]{Style.RESET_ALL} Output is:\n{repl}")
