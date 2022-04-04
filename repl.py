@@ -30,7 +30,8 @@ try:
           while not dead_end:
             addtorepl = input("       >>> ")
             if addtorepl != "":
-              repl = repl + "\n   " + addtorepl
+              repl = f"""{repl}
+                 {addtorepl}""")
               addtorepl = ""
             else:
               print(f"{Fore.MAGENTA}[debug]{Style.RESET_ALL} Output is:\n{repl}")
