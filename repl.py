@@ -1,5 +1,6 @@
 import os
 from colorama import *
+init()
 import sys
 import importlib
 dont_run = False
